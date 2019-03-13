@@ -1,0 +1,153 @@
+<html>
+    <head>
+        <title>Design Challenge</title>
+        <link rel="shortcut icon" href="mercedes.ico" />
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.com/libraries/Chart.js"></script>
+        <script src="index.js"></script>
+    </head>
+<body>
+    
+        <div id="mainHolder">
+            <div id="sideMenu">
+                <div class="blueSquare"></div>
+                <div class="graySquare"></div>
+                <div class="graySquare"></div>
+                <div class="graySquare"></div>
+            </div>
+            <div id="header">
+                    <div class="circle"></div>
+                    
+                            <div class="rect"></div>
+                            <div class="rect"></div>
+                            <div class="rect"></div>
+                    
+                
+               
+            </div>
+           
+            <div id = "dashboard">
+                    <div id="inputCSV">
+                            <div id="CSVform">
+                                <input class="inputfile" type="file" id="files" name="file" /> <br/>
+                                <button class="inputfile" onclick="readFile()">Get Dashboard</button>
+                            </div>
+                    </div>
+                <div id="pagetwo">
+                    <div id="headerTable">
+                            <table>
+                                    <tr>
+                                        <td style="padding-left:20px;padding-top:15px;"><h1 id="cardTitle">Loading Status</h1></td>
+                                        <td style="text-align:right;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <div id = "sort">
+                                                        <ul id="highLow">
+                                                            <li><a onclick="sortDescending()" href="#">Volume <svg xmlns="http://www.w3.org/2000/svg" fill="#3084e4" width="24" height="24" viewBox="0 -5 24 24"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg> </a>
+                                                                </li>
+                                                            <li><a onclick="sortDescending()" href="#">High to Low   <svg xmlns="http://www.w3.org/2000/svg" fill ="#3084e4" width="24" height="24" viewBox="0 -5 24 24"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg></a>
+                                                               </li>
+                                                        </ul>
+                                                        <ul id="lowHigh">
+                                                            <li><a onclick="sortAscending()" href="#">Volume 
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -5 24 24" fill="#3084e4"><path d="M7 14l5-5 5 5z"/><path d="M0 0h24v24H0z" fill="none"/> </svg> </a>
+                                                                </li>
+                                                            <li><a onclick="sortAscending()" href="#">Low to High
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -5 24 24" fill="#3084e4"><path d="M7 14l5-5 5 5z"/><path d="M0 0h24v24H0z" fill="none" /></svg></a>
+                                                               </li>
+                                                        </ul>
+                                        
+                                                    </div>
+                                        </td>
+                                        <td>
+                                                <div id="legendary">
+                                                        <table>
+                                                            <tr>
+                                                                <td>
+                                                                    
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path fill="#F13564" d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                                                                </td>
+                                                                <td>Max</td>
+                                                                <td>
+                                                                        <svg width="20" height="20"> 
+                                                                                <rect x="10" width="3" height="20" fill="#58E8C2" ></rect>
+                                                                           </svg>
+                                                                </td>
+                                                                <td>Space Available</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                        <svg width="20" height="20"> 
+                                                                                <rect y="10" width="20" height="3" fill="#3084e4" ></rect>
+                                                                           </svg>
+                                                                </td>
+                                                                <td>Current</td>
+                                                                <td>
+                                                                        <svg width="20" height="20"> 
+                                                                                <rect x="10" width="3" height="20" fill="#F13564" ></rect>
+                                                                           </svg>
+                                                                </td>
+                                                                <td>Overload</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                    </div>
+              
+                <canvas id="canvas"></canvas>
+                <div id="operations">
+                    <div id="list">
+                        <ul>
+                            <li id="Vince"><div id="circle"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"   name="Vince" type="checkbox"/></li>
+                            <li id="Neal"> <div id="circle"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"   name="Neal" type="checkbox"/></li>
+                            <li id="Mike"><div id="circle"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"   name="Mike" type="checkbox"/></li>
+                            <li id="Nikhil"><div id="circle"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"    name="Nikhil"type="checkbox"/></li>
+                            <li id="Nick"><div id="circle"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"   name="Nick" type="checkbox"/></li>
+                            <li id="Chester"><div id="circle"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"   name="Chester" type="checkbox"/></li>
+                            <li id="Prabhu"><div id="circle"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"   name="Prabhu" type="checkbox"/></li>
+                            <li id="Soren"><div id="circle"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"   name="Soren"type="checkbox"/></li>
+                            <li id="Chris"><div id="circle">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                                   </svg>
+                                </div><input class="myCheckbox"   name="Chris"type="checkbox"/></li>
+                            <li id="Joy"><div id="circle">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"   name="Joy"type="checkbox"/></li>
+                            <li id="Daniel"><div id="circle">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"   name="Daniel"type="checkbox"/></li>
+                            <li id="Fabi"><div id="circle">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"   name="Fabi"type="checkbox"/></li>
+                            <li id="Rob"><div id="circle">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"   name="Rob"type="checkbox"/></li>
+                            
+                            <li id="Matt"><div id="circle">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"   name="Matt" type="checkbox"/></li>
+                            <li id="Andrew"><div id="circle">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"   name="Andrew" type="checkbox"/></li>
+                            <li id="Svenja"><div id="circle">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"   name="Svenja" type="checkbox"/></li>
+                            <li id="Kevin"><div id="circle">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"   name="Kevin" type="checkbox"/></li>
+                            <li id="Amit"><div id="circle">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"    name="Amit" type="checkbox"/></li>
+                            <li id="Amruta"><div id="circle">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><input class="myCheckbox"   name="Amruta" type="checkbox"/></li>
+                        </ul>
+                    </div>
+                    <div id="merge">
+                        <button onclick="merge()">Merge</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+            
+        
+        </body>
+        
+        </html>
+        

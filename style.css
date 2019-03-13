@@ -1,0 +1,188 @@
+body{
+    background-color: #F0F0F0;
+    margin:0px;
+    font-family:  Arial;
+}
+#cardTitle{
+    margin-left:1.5%;
+}
+a{text-decoration: none;
+color:#3084e4;}
+button{
+    background-color:   #3084e4;
+        border: none;
+        padding-left: 25px;
+        padding-right: 25px;
+        margin-top: 20px;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        width:480px;
+        height:48px;
+}
+#pagetwo{
+    display: none;
+}
+#dashboard{
+    background-color: #fff;
+    border-radius:15px;
+    margin-left:10%;
+    margin-top:5%;
+    margin-bottom:5%;
+   width: 70%;
+   
+    float: left;
+}
+#touch{
+    float:right;
+    top:0px;
+}
+#header{
+    display: inline-block;
+    height: 10%;
+    width: 100%;
+   text-align: right;
+    top:0px;
+       position: absolute;
+        margin:0px;
+
+    text-align: center;
+    vertical-align: 50%;
+}
+canvas {
+-moz-user-select: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+}
+li{
+display: inline-block;
+}
+#circle{
+padding-right:22px;
+}
+#mainHolder{
+display: flex;
+}
+#list{
+width:100%;
+display: block;
+}
+#list ul{
+width: 100%;
+text-align: center;
+}
+#operations{
+
+width: 100%;
+padding-bottom: 2%;
+
+}
+#inputCSV{
+
+border-radius:25px;
+margin:5%;
+padding:5%;
+width: 80%;
+}
+#CSVform{
+        text-align: center;
+    }
+
+#sort{
+color:#3084e4;
+}
+
+
+#list ul li{
+
+float: left;
+}
+.rect{
+
+width: 5%;
+height: 20%;
+background-color: #CCCCCC;
+float: right;
+margin: 10px;
+margin-top:15px;
+border-radius: 25px;
+}
+#rectHolder{
+float: right;
+margin-top:1px;
+width: 100%;
+height:100%;
+display: inline-bl;
+}
+#lowHigh{
+display:none;
+}
+#legendary{
+float: right;
+margin-right: 10%;
+}
+.circle{
+
+width: 25px;
+height:25px;
+background-color: #CCCCCC;
+float: right;
+margin: 10px;
+border-radius: 25px;
+}
+#chartLegend{
+float: right;
+padding-right:50px;
+text-align: left;
+}
+#chartLegend div{
+margin-right:20px;
+}
+td{
+margin-right:20px;
+}
+#headerTable{
+width:100%;
+}
+#headerTable table{
+width: 100%;
+}
+#sideMenu{
+        background: #fff;
+     
+        top:0px;
+        left:0px;
+        margin:0px;
+        width:10%;
+        display:none;                     
+        
+
+    }
+#merge{
+    width:100%;
+    text-align: center;
+    padding-top:2%;
+    display: block;
+   
+}
+.graySquare{
+    width: 50px;
+height:50px;
+background-color: #CCCCCC;
+margin:20px;
+margin-top:20px;
+margin-bottom: 40px;
+border-radius: 15px;
+}
+
+.blueSquare{
+    width: 50px;
+height:70px;
+background-color: #3084e4;
+margin:20px;
+margin-bottom: 60px;
+border-radius: 25px;
+}
